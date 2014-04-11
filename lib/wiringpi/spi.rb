@@ -3,13 +3,13 @@ module WiringPi
     @channel = 0
 	def initialize(channel,speed)
 	  @channel = channel
-	  Wiringpi.wiringPiSPISetup(channel,speed)
+	  Wiringpi2.wiringPiSPISetup(channel,speed)
 	end
 	def wiringPiSPIGetFd()
-	  return Wiringpi.wiringPiSPIGetFd(@channel)
+	  return Wiringpi2.wiringPiSPIGetFd(@channel)
 	end
 	def wiringPiSPIDataRW(data)
-	  return Wiringpi.wiringPiSPIDataRW(@channel,data)
+	  return Wiringpi2.wiringPiSPIDataRW(@channel,data)
 	end
   end
 end

@@ -36,8 +36,8 @@
 // The SPI bus parameters
 //	Variables as they need to be passed as pointers later on
 
-static char       *spiDev0 = "/dev/spidev0.0" ;
-static char       *spiDev1 = "/dev/spidev0.1" ;
+static char       *spiDev0 = "/dev/spidev1.0" ;
+static char       *spiDev1 = "/dev/spidev1.1" ;
 static uint8_t     spiMode   = 0 ;
 static uint8_t     spiBPW    = 8 ;
 static uint16_t    spiDelay  = 0;
