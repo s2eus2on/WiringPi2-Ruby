@@ -1,4 +1,4 @@
-module WiringPi
+module WiringPi2
   class Modules
     class Mcp23017 < ModuleBase
 
@@ -8,7 +8,7 @@ module WiringPi
         @pin_base = pin_base
         @pin_count = 16
         @i2c_address = i2c_address
-        Wiringpi.mcp23017Setup( pin_base, i2c_address )
+        WiringPi2.mcp23017Setup( pin_base, i2c_address )
         super()
       end
     end
@@ -22,7 +22,7 @@ module WiringPi
         @pin_count = 16
         @spi_port = spi_port
         @device_id = device_id
-        Wiringpi.mcp23s17Setup( pin_base, spi_port, device_id )
+        WiringPi2.mcp23s17Setup( pin_base, spi_port, device_id )
         super()
       end
 

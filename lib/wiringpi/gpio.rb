@@ -1,4 +1,4 @@
-module WiringPi
+module WiringPi2
   class GPIO
 
     @modules = Array.new
@@ -7,7 +7,7 @@ module WiringPi
     attr_reader :modules, :pins
 
     def initialize(&block)
-      Wiringpi2.wiringPiSetup
+      WiringPi2.wiringPiSetup
       @pins = Array.new
       instance_eval &block if block_given?
     end
@@ -15,7 +15,7 @@ module WiringPi
     def read_byte(starting_pin)
       bits = Array.new
       8.times do |time|
-        bits << Wiringpi2.digitalRead(starting_pin + time)
+        bits << WiringPi2.digitalRead(starting_pin + time)
       end
       bits.join
     end
@@ -24,7 +24,7 @@ module WiringPi
       byte = byte.to_s(2) unless byte.length = 8
       offset = starting_pin
       byte.each_char do |bit|
-        Wiringpi2.digitalWrite(offset, bit)
+        WiringPi2.digitalWrite(offset, bit)
         offset += 1
       end
     end
@@ -32,97 +32,97 @@ module WiringPi
     def digital_read(pin)
       if pin.respond_to?(:each)
         pin.collect do |pin|
-          Wiringpi2.digitalRead(pin)
+          WiringPi2.digitalRead(pin)
         end
       else
-        Wiringpi2.digitalRead(pin)
+        WiringPi2.digitalRead(pin)
       end
     end
 
     def digital_write(pin, value)
       if pin.respond_to?(:each)
         pin.each do |pin|
-          Wiringpi2.digitalWrite(pin, value)
+          WiringPi2.digitalWrite(pin, value)
         end
       else
-        Wiringpi2.digitalWrite(pin, value)
+        WiringPi2.digitalWrite(pin, value)
       end
     end
 
     def pin_mode(pin, mode)
-      Wiringpi2.pinMode(pin, mode)
+      WiringPi2.pinMode(pin, mode)
     end
 
     def pull_up_dn_control(pin,mode)
-      Wiringpi2.pullUpDnControl(pin, mode)
+      WiringPi2.pullUpDnControl(pin, mode)
     end
 
 	def delay(ms)
-	  Wiringpi2.delay(ms)
+    WiringPi2.delay(ms)
 	end
 
 	def delay_microseconds(ms)
-	  Wiringpi2.delayMicroseconds(ms)
+    WiringPi2.delayMicroseconds(ms)
 	end
 
 	def millis()
-	  return Wiringpi2.millis()
+	  return WiringPi2.millis()
 	end
 
 	def micros()
-	  return Wiringpi2.micros()
+	  return WiringPi2.micros()
 	end
 
        def pi_board_rev()
-          return Wiringpi2.piBoardRev()
+          return WiringPi2.piBoardRev()
        end
 
        def wpi_pin_to_gpio(pin)
-          return Wiringpi2.wpiPinToGpio(pin)
+          return WiringPi2.wpiPinToGpio(pin)
        end
 
        def phys_pin_to_gpio(pin)
-          return Wiringpi2.physPinToGpio(pin)
+          return WiringPi2.physPinToGpio(pin)
        end
 
 	def pwm_set_mode(mode)
-	  return Wiringpi2.pwmSetMode(mode)
+	  return WiringPi2.pwmSetMode(mode)
 	end
 
 	def pwm_set_range(range)
-	  return Wiringpi2.pwmSetRange(range)
+	  return WiringPi2.pwmSetRange(range)
 	end
 
 	def pwm_set_clock(divisor)
-	  return Wiringpi2.pwmSetClock(divisor)
+	  return WiringPi2.pwmSetClock(divisor)
 	end
 
   def soft_pwm_create(pin, initial_value, pwm_range)
-    return Wiringpi2.softPwmCreate(pin, initial_value, pwm_range)
+    return WiringPi2.softPwmCreate(pin, initial_value, pwm_range)
   end
 
   def soft_pwm_write(pin, value)
-    Wiringpi2.softPwmWrite(pin, value)
+    WiringPi2.softPwmWrite(pin, value)
   end
 
 	def gpio_clock_set(pin, freq)
-	  return Wiringpi2.gpioClockSet(pin, freq)
+	  return WiringPi2.gpioClockSet(pin, freq)
 	end
 
 	def wait_for_interrupt(pin, ms)
-	  Wiringpi2.waitForInterrupt(pin, ms)
+    WiringPi2.waitForInterrupt(pin, ms)
 	end
 
 	def wiringpi_isr(pin, mode, fn)
-	  Wiringpi2.wiringPiISR(pin, mode, fn)
+    WiringPi2.wiringPiISR(pin, mode, fn)
 	end
 
 	def shift_out(dpin, cpin, order, val )
-	  Wiringpi2.shiftOut(dpin,cpin,order,val)
+    WiringPi2.shiftOut(dpin,cpin,order,val)
 	end
 
 	def shift_in(dpin, cpin, order)
-	  Wiringpi2.shiftIn(dpin,cpin,order)
+    WiringPi2.shiftIn(dpin,cpin,order)
 	end
 
     def add_module(module_instance)

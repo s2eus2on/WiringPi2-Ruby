@@ -1,4 +1,4 @@
-module WiringPi
+module WiringPi2
 	class GPIO
 		def interrupt(pin, edge, &block)
 			Thread.new do

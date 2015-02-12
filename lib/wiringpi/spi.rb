@@ -1,15 +1,15 @@
-module WiringPi
+module WiringPi2
   class SPI
     @channel = 0
 	def initialize(channel,speed)
 	  @channel = channel
-	  Wiringpi2.wiringPiSPISetup(channel,speed)
+    WiringPi2.wiringPiSPISetup(channel,speed)
 	end
 	def wiringPiSPIGetFd()
-	  return Wiringpi2.wiringPiSPIGetFd(@channel)
+	  return WiringPi2.wiringPiSPIGetFd(@channel)
 	end
 	def wiringPiSPIDataRW(data)
-	  return Wiringpi2.wiringPiSPIDataRW(@channel,data)
+	  return WiringPi2.wiringPiSPIDataRW(@channel,data)
 	end
   end
 end

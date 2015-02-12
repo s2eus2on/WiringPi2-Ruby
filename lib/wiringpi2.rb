@@ -1,5 +1,5 @@
 require 'wiringpi2/wiringpi2'
-module WiringPi
+module WiringPi2
   extend self
 
   HIGH = 1
