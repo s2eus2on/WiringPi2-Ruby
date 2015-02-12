@@ -1,4 +1,8 @@
 require 'wiringpi2/wiringpi2'
+<<<<<<< HEAD
+=======
+
+>>>>>>> b073bad0d7d070db2e49582d677cec27bb2a85bd
 module WiringPi2
   extend self
 
@@ -39,4 +43,4 @@ module WiringPi2
   end
 
 end
-Dir[File.dirname(__FILE__) + '/wiringpi/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/wiringpi2/*.rb'].each {|file| require file }
